@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My PWA</title>
-  <link rel="manifest" href="/manifest.json">
+  <meta charset="UTF-8" />
+  <title>PWA Worker Counter</title>
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <h1>Hello PWA!</h1>
+  <h1>Counter: <span id="count">0</span></h1>
+
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js');
+    const countEl = document.getElementById("count");
+
+    // Start worker
+    const worker = new Worker("/counter-worker.js");
+
+    worker.onmessage = (e) => {
+      countEl.textContent = e.data;
+    };
+
+    // Register service worker (for offline)
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js");
     }
   </script>
 </body>

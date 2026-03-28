@@ -1,8 +1,9 @@
-const CACHE_NAME = 'v1';
+const CACHE_NAME = 'my-pwa-v1';
 const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/counter-worker.js',
   '/icon-192.png',
   '/icon-512.png'
 ];
