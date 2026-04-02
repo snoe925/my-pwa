@@ -20,6 +20,8 @@
     li:hover { background: #f8f9fa; }
     input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
     .url-text { flex: 1; word-break: break-all; }
+    .url-text a { color: #007bff; text-decoration: underline; cursor: pointer; }
+    .url-text a:hover { color: #0056b3; }
     .empty-message { color: #666; text-align: center; padding: 24px; }
   </style>
 </head>
@@ -66,7 +68,7 @@
         const li = document.createElement('li');
         li.innerHTML = `
           <input type="checkbox" class="url-checkbox" data-id="${url.id}">
-          <span class="url-text">${url.url}</span>
+          <a href="${url.url}" target="_blank" class="url-text">${url.url}</a>
         `;
         urlList.appendChild(li);
       });
